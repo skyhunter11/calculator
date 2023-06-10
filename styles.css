@@ -1,7 +1,8 @@
 :root {
 --border: #699;
---calculator: beige;
+--calculator: #699;
 --screen: rgb(200, 195, 195);
+--button: beige;
 }
 
 .main {
@@ -46,4 +47,5 @@
 button {
     border-radius: 15px;
     border: solid var(--border);
+    background-color: var(--button);
 }
