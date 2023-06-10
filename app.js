@@ -5,7 +5,7 @@ let operator;
 let num2;
 
 
-// FUNCTIONS
+// FUNCTIONS:
 
 // OPERATE FUNCTION
 function operate(num1, num2, operator){
@@ -22,8 +22,6 @@ function operate(num1, num2, operator){
         return divide(num1, num2);
     };
 };
-
-
 // ADDITION FUNCTION
 function add(num1, num2) {
     return num1 + num2;
