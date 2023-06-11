@@ -1,8 +1,9 @@
 :root {
---border: black;
---calculator: #699;
---screen: rgb(200, 195, 195);
---button: beige;
+--calculatorColor: #699;
+--screenColor: rgb(200, 195, 195);
+--numberButtonColor: beige;
+--operatorButtonColor: rgba(245, 245, 220, 0.487);
+--borderColor: black;
 --radius: 5px;
 }
 
@@ -20,18 +21,18 @@
 
 .calculator {
     width: 400px;
-    border: solid var(--border);
+    border: solid var(--borderColor);
     border-radius: var(--radius);
     padding: 20px;
-    background-color: var(--calculator);
+    background-color: var(--calculatorColor);
 }
 
 .screen {
     text-align: right;
     padding: 20px;
     margin-bottom: 10px;
-    background-color: var(--screen);
-    border: solid var(--border);
+    background-color: var(--screenColor);
+    border: solid var(--borderColor);
     border-radius: var(--radius);
     font-size: 20px;
 }
@@ -49,12 +50,16 @@
 
 button {
     border-radius: var(--radius);
-    border: solid var(--border);
-    background-color: var(--button);
+    border: solid var(--borderColor);
+    background-color: var(--numberButtonColor);
     padding: 20px;
     font-size: 19px;
 }
 
-.colored-button {
-    background-color: rgba(245, 245, 220, 0.487);
+.operator-button {
+    background-color: var(--operatorButtonColor);
+}
+
+.number-button {
+    color: red;
 }
