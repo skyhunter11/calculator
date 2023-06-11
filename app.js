@@ -8,6 +8,13 @@ let num2;
 // You should be storing the ‘display value’ in a variable somewhere for use in the next step.
 
 
+const numberButtons = document.querySelectorAll('[data-number]');
+const operatorButtons = document.querySelectorAll('[data-operator]');
+
+numberButtons.forEach((button) =>
+  button.addEventListener('click', () => console.log(69))
+);
+
 // FUNCTIONS:
 
 // OPERATE FUNCTION
