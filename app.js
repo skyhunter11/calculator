@@ -4,18 +4,56 @@ let num1;
 let operator;
 let num2;
 
+
 // Create the functions that populate the display when you click the number buttons.
 // You should be storing the ‘display value’ in a variable somewhere for use in the next step.
 
+// Initialize Variables
+let shouldResetScreen = false;
 
+
+// Build Nodelists for buttons
 const numberButtons = document.querySelectorAll('[data-number]');
 const operatorButtons = document.querySelectorAll('[data-operator]');
 
+// Tag clear button
+const clearButton = document.getElementById('clearButton');
+// Tag current operation screen
+const currentOperationScreen = document.getElementById('currentOperationScreen')
+
+// call clearScren function when clearButton is clicked
+clearButton.addEventListener('click', clearScreen)
+
+
+// numberButton Listener
 numberButtons.forEach((button) =>
-  button.addEventListener('click', () => console.log(69))
+    button.addEventListener('click', () => appendNumber(button.textContent))
 );
 
-// FUNCTIONS:
+// operatorButton Listener
+operatorButtons.forEach((button) => 
+    button.addEventListener('click', () => console.log("fuck the system"))
+);
+
+function appendNumber(number) {
+    if (currentOperationScreen.textContent === '0' || shouldResetScreen)
+      resetScreen()
+    currentOperationScreen.textContent += number
+  }
+
+function resetScreen() {
+    currentOperationScreen.textContent = ''
+    shouldResetScreen = false
+  }
+
+function clearScreen() {
+    currentOperationScreen.textContent = '0'
+    // lastOperationScreen.textContent = ''
+    // firstOperand = ''
+    // secondOperand = ''
+    // currentOperation = null
+  }
+
 
 // OPERATE FUNCTION
 function operate(num1, num2, operator){
