@@ -18,8 +18,10 @@ const operatorButtons = document.querySelectorAll('[data-operator]');
 
 // Tag clear button
 const clearButton = document.getElementById('clearButton');
+// Tag last operation screen
+const lastOperationScreen = document.getElementById('lastOperationScreen');
 // Tag current operation screen
-const currentOperationScreen = document.getElementById('currentOperationScreen')
+const currentOperationScreen = document.getElementById('currentOperationScreen');
 
 // call clearScren function when clearButton is clicked
 clearButton.addEventListener('click', clearScreen)
@@ -32,27 +34,32 @@ numberButtons.forEach((button) =>
 
 // operatorButton Listener
 operatorButtons.forEach((button) => 
-    button.addEventListener('click', () => console.log("fuck the system"))
+    button.addEventListener('click', () => appendOperator(button.textContent))
+
 );
 
 function appendNumber(number) {
     if (currentOperationScreen.textContent === '0' || shouldResetScreen)
       resetScreen()
     currentOperationScreen.textContent += number
-  }
+  };
+
+  function appendOperator(operator) {
+    lastOperationScreen.textContent += operator;
+  };
 
 function resetScreen() {
     currentOperationScreen.textContent = ''
     shouldResetScreen = false
-  }
+  };
 
 function clearScreen() {
     currentOperationScreen.textContent = '0'
-    // lastOperationScreen.textContent = ''
+    lastOperationScreen.textContent = '';
     // firstOperand = ''
     // secondOperand = ''
     // currentOperation = null
-  }
+  };
 
 
 // OPERATE FUNCTION
