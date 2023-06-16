@@ -1,4 +1,6 @@
 
+let firstOperand = '';
+
 
 let num1;
 let operator;
@@ -45,7 +47,10 @@ function appendNumber(number) {
   };
 
   function appendOperator(operator) {
-    lastOperationScreen.textContent += operator;
+    firstOperand = currentOperationScreen.textContent;
+    currentOperator = operator;
+    lastOperationScreen.textContent = `${firstOperand} ${currentOperator}`;
+    shouldResetScreen = true;
   };
 
 function resetScreen() {
