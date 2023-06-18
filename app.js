@@ -4,11 +4,6 @@ let secondOperand = '';
 let currentOperator = null;
 
 
-let num1;
-let operator;
-let num2;
-
-
 // Create the functions that populate the display when you click the number buttons.
 // You should be storing the ‘display value’ in a variable somewhere for use in the next step.
 
@@ -23,6 +18,8 @@ const operatorButtons = document.querySelectorAll('[data-operator]');
 const clearButton = document.getElementById('clearButton');
 // Tag equals button
 const equalsButton = document.getElementById('equalsButton');
+// Tag dot button
+const dotButton = document.getElementById('dotButton');
 
 // Tag last operation screen
 const lastOperationScreen = document.getElementById('lastOperationScreen');
@@ -33,6 +30,9 @@ const currentOperationScreen = document.getElementById('currentOperationScreen')
 clearButton.addEventListener('click', clearScreen);
 // call evaluate function when equalsButton is clicked
 equalsButton.addEventListener('click', evaluate);
+
+// call 
+dotButton.addEventListener('click', () => console.log('fuck tyrrany'));
 
 
 
@@ -68,7 +68,9 @@ function evaluate() {
         return;
     };
     secondOperand = currentOperationScreen.textContent;
-    currentOperationScreen.textContent = operate(firstOperand, secondOperand, currentOperator);
+    currentOperationScreen.textContent = roundResult(
+        operate(firstOperand, secondOperand, currentOperator)
+        );
     lastOperationScreen.textContent = `${firstOperand} ${currentOperator} ${secondOperand} =`;
 };
 
@@ -84,6 +86,14 @@ function clearScreen() {
     secondOperand = '';
     currentOperator = null;
   };
+
+function appendDot() {
+    
+};
+
+function roundResult(number) {
+    return Math.round(number * 1000) / 1000;
+};
 
 
 // OPERATE FUNCTION
