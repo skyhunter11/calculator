@@ -1,14 +1,9 @@
 
+// Initialize Variables
 let firstOperand = '';
 let secondOperand = '';
 let currentOperator = null;
-
-// Create the functions that populate the display when you click the number buttons.
-// You should be storing the ‘display value’ in a variable somewhere for use in the next step.
-
-// Initialize Variables
 let shouldResetScreen = false;
-
 
 // Build Nodelists for buttons
 const numberButtons = document.querySelectorAll('[data-number]');
@@ -18,33 +13,32 @@ const operatorButtons = document.querySelectorAll('[data-operator]');
 const clearButton = document.getElementById('clearButton');
 const equalsButton = document.getElementById('equalsButton');
 const dotButton = document.getElementById('dotButton');
+const deleteButton = document.getElementById('deleteButton');
 
 // Display Tags
 const lastOperationScreen = document.getElementById('lastOperationScreen');
 const currentOperationScreen = document.getElementById('currentOperationScreen');
 
+// ***THESE LISTENERS ARE BIG. ALL FUNCTIONS ARE TRIGGERED OFF OF THEM*** //
 // Function Calls via Button Click
+    //single butons
 clearButton.addEventListener('click', clearScreen);
 equalsButton.addEventListener('click', evaluate);
 dotButton.addEventListener('click', appendDot);
-
-
-
-// ***THESE LISTENERS ARE BIG. ALL FUNCTIONS ARE TRIGGERED OFF OF THEM*** //
-// numberButton Listener
+deleteButton.addEventListener('click', deleteInput);
+    // buttons in Nodelist
 numberButtons.forEach((button) =>
     button.addEventListener('click', () => appendNumber(button.textContent))
 );
-// operatorButton Listener
 operatorButtons.forEach((button) => 
     button.addEventListener('click', () => setOperator(button.textContent))
 );
 
-
+//FUNCTIONS//
 function appendNumber(number) {
     if (currentOperationScreen.textContent === '0' || shouldResetScreen)
       resetScreen();
-    currentOperationScreen.textContent += number
+    currentOperationScreen.textContent += number;
   };
 
 function setOperator(operator) {
@@ -66,7 +60,7 @@ function evaluate() {
         operate(firstOperand, secondOperand, currentOperator)
         );
     lastOperationScreen.textContent = `${firstOperand} ${currentOperator} ${secondOperand} =`;
-};
+  };
 
 function resetScreen() {
     currentOperationScreen.textContent = '';
@@ -90,14 +84,15 @@ function appendDot() {
         return;
     };
     currentOperationScreen.textContent += '.';
-};
+  };
 
-
+function deleteInput() {
+    currentOperationScreen.textContent = currentOperationScreen.textContent.slice(0,-1);
+  };
 
 function roundResult(number) {
     return Math.round(number * 1000) / 1000;
-};
-
+  };
 
 // OPERATE FUNCTION
 function operate(num1, num2, operator){
@@ -117,22 +112,22 @@ function operate(num1, num2, operator){
         default:
             return null;
     }
-};
+  };
 
 // ADDITION FUNCTION
 function add(num1, num2) {
     return num1 + num2;
-};
+  };
 // SUBTRACTION FUNCTION
 function subtract(num1, num2) {
     return num1 - num2;
-};
+  };
 // MULTIPLICATION FUNCTION
 function multiply(num1, num2) {
     return num1 * num2;
-};
+  };
 // DIVISION FUNCTION
 function divide(num1, num2) {
     return num1 / num2;
-};
+  };
 
