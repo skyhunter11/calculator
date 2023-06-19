@@ -3,7 +3,6 @@ let firstOperand = '';
 let secondOperand = '';
 let currentOperator = null;
 
-
 // Create the functions that populate the display when you click the number buttons.
 // You should be storing the ‘display value’ in a variable somewhere for use in the next step.
 
@@ -14,25 +13,20 @@ let shouldResetScreen = false;
 // Build Nodelists for buttons
 const numberButtons = document.querySelectorAll('[data-number]');
 const operatorButtons = document.querySelectorAll('[data-operator]');
-// Tag clear button
+
+// Button Tags
 const clearButton = document.getElementById('clearButton');
-// Tag equals button
 const equalsButton = document.getElementById('equalsButton');
-// Tag dot button
 const dotButton = document.getElementById('dotButton');
 
-// Tag last operation screen
+// Display Tags
 const lastOperationScreen = document.getElementById('lastOperationScreen');
-// Tag current operation screen
 const currentOperationScreen = document.getElementById('currentOperationScreen');
 
-// call clearScren function when clearButton is clicked
+// Function Calls via Button Click
 clearButton.addEventListener('click', clearScreen);
-// call evaluate function when equalsButton is clicked
 equalsButton.addEventListener('click', evaluate);
-
-// call 
-dotButton.addEventListener('click', () => console.log('fuck tyrrany'));
+dotButton.addEventListener('click', appendDot);
 
 
 
@@ -88,8 +82,17 @@ function clearScreen() {
   };
 
 function appendDot() {
-    
+    if (shouldResetScreen) resetScreen();
+    if (currentOperationScreen.textContent === '') {
+        currentOperationScreen.textContent = '0';
+    };
+    if (currentOperationScreen.textContent.includes('.')) {
+        return;
+    };
+    currentOperationScreen.textContent += '.';
 };
+
+
 
 function roundResult(number) {
     return Math.round(number * 1000) / 1000;
